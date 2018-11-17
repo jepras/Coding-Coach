@@ -132,7 +132,7 @@ class Home extends Component {
                     <p className="hero-cta is-revealing">
                       <a
                         className="button button-primary button-shadow"
-                        href="/"
+                        href="https://jepperasmussen1.typeform.com/to/YuVYW5"
                       >
                         Make request
                       </a>
@@ -1043,6 +1043,9 @@ class Home extends Component {
                             </li>
                             <li className="is-revealing">
                               <span>Access to archive of solutions</span>
+                            </li>
+                            <li className="is-revealing">
+                              <span>Unlimited requests</span>
                             </li>
                             <li className="is-revealing">
                               <span>Only help from qualified coaches</span>
