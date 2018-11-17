@@ -1,11 +1,20 @@
-import coaches from "./coachReducer";
-import fetch from "./fetch";
-
+import authReducer from "./authReducer";
+import requestReducer from "./requestReducer";
+import coachReducer from "./coachReducer";
 import { combineReducers } from "redux";
+import { firestoreReducer } from "redux-firestore";
+import { firebaseReducer } from "react-redux-firebase";
 
-const logApp = combineReducers({
-  coaches,
-  fetch
+const rootReducer = combineReducers({
+  auth: authReducer,
+  // firestoreReducer syncs data in database to firestore
+  firestore: firestoreReducer,
+  // for login
+  firebase: firebaseReducer,
+  requests: requestReducer,
+  coaches: coachReducer
 });
 
-export default logApp;
+export default rootReducer;
+
+// the key name will be the data property on the state object

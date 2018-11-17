@@ -1,14 +1,9 @@
 /* eslint-disable default-case */
 const requests = (state = [], action) => {
   switch (action.type) {
-    case "ADD_COACH":
+    case "ADD_REQUEST":
       console.log("succes?");
-      return [
-        ...state,
-        {
-          name: action.name
-        }
-      ];
+      return [...state];
 
     case "UPDATE_COACH":
       return [

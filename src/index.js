@@ -10,26 +10,43 @@ import promise from "redux-promise";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 
+import { reduxFirestore, getFirestore } from "redux-firestore";
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import fbConfig from "./config/fbConfig";
+
 import * as serviceWorker from "./serviceWorker";
 
-let middleware = applyMiddleware(thunk, promise, logger);
+let middleware = applyMiddleware(
+  thunk.withExtraArgument({ getFirebase, getFirestore }),
+  promise,
+  logger
+);
 
 let store = createStore(
   rootReducer,
   compose(
     middleware,
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig, {
+      useFirestoreForProfile: true,
+      userProfile: "users",
+      attachAuthIsReady: true
+    }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("root")
-);
+// wait for firebase to be ready before rendering
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById("root")
+  );
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

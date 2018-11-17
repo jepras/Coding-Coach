@@ -7,6 +7,8 @@ import Navbar from "./components/Layout/Navbar";
 import Home from "./components/Home";
 import CoachList from "./components/Coaches/CoachList";
 import StudentList from "./components/Students/StudentList";
+import SignIn from "./components/auth/SignIn";
+import SignUp from "./components/auth/SignUp";
 
 class Main extends Component {
   render() {
@@ -17,6 +19,8 @@ class Main extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/coachlist" component={CoachList} />
           <Route path="/studentlist" component={StudentList} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/signup" component={SignUp} />
         </Switch>
       </div>
     );
