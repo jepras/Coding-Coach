@@ -1055,7 +1055,7 @@ class Home extends Component {
                         <div className="pricing-table-cta is-revealing">
                           <a
                             className="button button-primary button-shadow button-block"
-                            href="/"
+                            href="https://jepperasmussen1.typeform.com/to/YuVYW5"
                           >
                             Get started
                           </a>
