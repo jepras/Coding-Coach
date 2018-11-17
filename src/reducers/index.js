@@ -1,11 +1,11 @@
-import entries from './entries'
-import fetch from './fetch'
+import coaches from "./coachReducer";
+import fetch from "./fetch";
 
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
 const logApp = combineReducers({
-    entries,
-    fetch
+  coaches,
+  fetch
 });
 
-export default logApp
+export default logApp;

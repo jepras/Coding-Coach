@@ -1,29 +1,29 @@
-let nextEntryId = 0
+let nextEntryId = 0;
 
-export const addEntry = (text, image) => {
-    return {
-        type: 'ADD_ENTRY',
-        id: nextEntryId++,
-        text,
-        date: 'today',
-        image
-    }
-}
+export const createCoach = (name, skills, rating) => {
+  return {
+    type: "ADD_COACH",
+    id: nextEntryId++,
+    name,
+    skills,
+    rating
+  };
+};
 
-export const updateEntry = (text, image) => {
-    return {
-        type: 'UPDATE_ENTRY',
-        id: nextEntryId++,
-        text,
-        image
-    }
-}
+export const updateEntry = (name, skills, rating) => {
+  return {
+    type: "UPDATE_ENTRY",
+    name,
+    skills,
+    rating
+  };
+};
 
-export const deleteEntry = (text, image) => {
-    return {
-        type: 'DELETE_ENTRY',
-        id: nextEntryId++,
-        text,
-        image
-    }
-}
+export const deleteEntry = (name, skills, rating) => {
+  return {
+    type: "DELETE_ENTRY",
+    name,
+    skills,
+    rating
+  };
+};
