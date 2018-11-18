@@ -4,6 +4,7 @@ import RequestList from "../components/Request/RequestList";
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   console.log(ownProps);
+  console.log(state.requests);
 
   return {
     requests: state.requests,

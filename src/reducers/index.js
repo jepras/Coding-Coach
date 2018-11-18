@@ -1,6 +1,8 @@
 import authReducer from "./authReducer";
 import requestReducer from "./requestReducer";
 import coachReducer from "./coachReducer";
+import postReducer from "./postReducer";
+import asyncReducer from "./asyncReducer";
 import { combineReducers } from "redux";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
   // for login
   firebase: firebaseReducer,
   requests: requestReducer,
-  coaches: coachReducer
+  coaches: coachReducer,
+  async: asyncReducer,
+  posts: postReducer
 });
 
 export default rootReducer;

@@ -3,7 +3,13 @@ const requests = (state = [], action) => {
   switch (action.type) {
     case "ADD_REQUEST":
       console.log("succes?");
-      return [...state];
+      return [
+        ...state,
+        {
+          name: action.name,
+          tech: action.tech
+        }
+      ];
 
     case "UPDATE_COACH":
       return [

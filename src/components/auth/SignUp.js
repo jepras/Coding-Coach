@@ -26,49 +26,56 @@ class SignUp extends Component {
 
     return (
       <Layout>
-        <section className="container-sm">
-          <div className="hero-inner">
-            <div className="hero-copy text-center">
+        <section className="">
+          <div className="hero-inner columns is-mobile">
+            <div className="hero-copy text-center column is-half is-offset-one-quarter">
               <form
                 attribute="netlify"
                 className="white"
                 onSubmit={this.handleSubmit}
               >
-                <h5 className="hero-title mt-0 is-revealing">Sign Up</h5>
-                <div className="input-field">
-                  <input
-                    placeholder="Email"
-                    type="email"
-                    id="email"
-                    onChange={this.handleChange}
-                  />
+                <h1 className="hero-title mt-0 is-revealing">Sign Up</h1>
+                <div className="field">
+                  <div className="control">
+                    <input
+                      placeholder="Email"
+                      className="input"
+                      type="email"
+                      id="email"
+                      onChange={this.handleChange}
+                    />
+                  </div>
                 </div>
-                <div className="input-field">
+
+                <div className="field">
                   <input
                     placeholder="Password"
+                    className="control input"
                     type="password"
                     id="password"
                     onChange={this.handleChange}
                   />
                 </div>
-                <div className="input-field">
+                <div className="field">
                   <input
                     placeholder="First name"
+                    className="control input"
                     type="text"
                     id="firstName"
                     onChange={this.handleChange}
                   />
                 </div>
-                <div className="input-field">
+                <div className="field">
                   <input
                     placeholder="Last name"
+                    className="control input"
                     type="text"
                     id="lastName"
                     onChange={this.handleChange}
                   />
                 </div>
-                <div className="input-field">
-                  <button className="btn pink lighten-1 z-depth-0">
+                <div className="field">
+                  <button className="button button-primary button-shadow">
                     Sign Up
                   </button>
                   <div className="red-text center">

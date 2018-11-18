@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "bulma": "^0.7.2",
+    "cross-fetch": "^2.2.3",
     "firebase": "^5.5.8",
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",

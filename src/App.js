@@ -10,6 +10,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import Request from "./components/Request/Request";
 import CoachStart from "./components/Coaches/CoachStart";
+import Reddit from "./containers/Reddit";
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
         <Route path="/signup" component={SignUp} />
         <Route path="/createcoach" component={CoachStart} />
         <Route path="/request/:id" component={Request} />
+        <Route path="/reddit" component={Reddit} />
       </div>
     );
   }

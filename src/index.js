@@ -16,6 +16,14 @@ import fbConfig from "./config/fbConfig";
 
 import * as serviceWorker from "./serviceWorker";
 
+import "babel-polyfill";
+
+import {
+  selectSubreddit,
+  fetchPosts,
+  fetchPostsIfNeeded
+} from "./actions/async";
+
 let middleware = applyMiddleware(
   thunk.withExtraArgument({ getFirebase, getFirestore }),
   promise,
@@ -36,6 +44,11 @@ let store = createStore(
   )
 );
 
+store.dispatch(selectSubreddit("reactjs"));
+store.dispatch(fetchPosts("reactjs")).then(() => console.log(store.getState()));
+store.dispatch(fetchPostsIfNeeded("reactjs"));
+/*   .then(() => console.log(store.getState()));
+ */
 // wait for firebase to be ready before rendering
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(

@@ -1,23 +1,8 @@
-export const addRequest = (
-  name,
-  title,
-  issue,
-  date,
-  tech,
-  link,
-  email,
-  open
-) => {
+export const addRequest = (name, tech) => {
   return {
     type: "ADD_REQUEST",
-    title,
-    issue,
     name,
-    date,
-    tech,
-    link,
-    email,
-    open
+    tech
   };
 };
 

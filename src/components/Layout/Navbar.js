@@ -115,7 +115,7 @@ export default class Navbar extends Component {
               </h1>
             </div>
 
-            <div className="header-item">
+            {/* <div className="header-item">
               <NavLink to="/createcoach">Create Coach Profile</NavLink>
             </div>
             <div className="header-item">
@@ -133,7 +133,7 @@ export default class Navbar extends Component {
               >
                 Login
               </NavLink>
-            </div>
+            </div> */}
           </div>
         </div>
       </header>
