@@ -45,14 +45,16 @@ export function fetchPosts(subreddit) {
 }
 
 function shouldFetchPosts(state, subreddit) {
-  /* const posts = state.postsBySubreddit[subreddit];
+  console.log(state.postsBySubreddit.reactjs);
+  // changed from postsBySubreddit to just posts
+  const posts = state.postsBySubreddit[subreddit];
   if (!posts) {
     return true;
   } else if (posts.isFetching) {
     return false;
   } else {
     return posts.didInvalidate;
-  } */
+  }
 }
 
 export function fetchPostsIfNeeded(subreddit) {

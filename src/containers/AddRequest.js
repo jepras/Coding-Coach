@@ -4,14 +4,9 @@ import { addRequest } from "../actions";
 
 class AddRequest extends Component {
   state = {
-    title: "",
-    issue: "",
-    name: "",
-    date: "today",
     tech: "",
-    link: "",
-    email: "",
-    open: true
+    name: ""
+    
   };
 
   handleChange = e => {

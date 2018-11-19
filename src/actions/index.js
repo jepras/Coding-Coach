@@ -1,8 +1,8 @@
-export const addRequest = (name, tech) => {
+export const addRequest = state => {
   return {
     type: "ADD_REQUEST",
-    name,
-    tech
+    name: state.name,
+    tech: state.tech
   };
 };
 

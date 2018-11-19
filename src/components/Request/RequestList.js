@@ -17,15 +17,4 @@ const RequestList = ({ requests }) => (
   </div>
 );
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(state.requests.data);
-
-  return {
-    requests: state.requests
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  null
-)(RequestList);
+export default RequestList;
