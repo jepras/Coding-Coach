@@ -10,6 +10,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import Request from "./components/Request/Request";
 import CoachStart from "./components/Coaches/CoachStart";
+import Airtable from "./containers/Airtable";
 import Reddit from "./containers/Reddit";
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
         <Route path="/createcoach" component={CoachStart} />
         <Route path="/request/:id" component={Request} />
         <Route path="/reddit" component={Reddit} />
+        <Route path="/airtable" component={Airtable} />
       </div>
     );
   }

@@ -3,6 +3,7 @@ import requestReducer from "./requestReducer";
 import coachReducer from "./coachReducer";
 import postsBySubreddit from "./postReducer";
 import selectedSubreddit from "./asyncReducer";
+import airtableRecord from "./airtableReducer";
 import { combineReducers } from "redux";
 import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   requests: requestReducer,
   coaches: coachReducer,
   postsBySubreddit,
-  selectedSubreddit
+  selectedSubreddit,
+  airtableRecord
 });
 
 export default rootReducer;

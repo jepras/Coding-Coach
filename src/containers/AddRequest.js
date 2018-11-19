@@ -6,7 +6,6 @@ class AddRequest extends Component {
   state = {
     tech: "",
     name: ""
-    
   };
 
   handleChange = e => {
@@ -18,11 +17,9 @@ class AddRequest extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addRequest(this.state);
-    console.log(this.state);
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>

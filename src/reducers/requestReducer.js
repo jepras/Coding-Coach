@@ -7,8 +7,6 @@ const requests = (
 ) => {
   switch (action.type) {
     case "ADD_REQUEST":
-      console.log("succes?");
-      console.log(action);
       return {
         ...state,
         req: state.req.push([action.req])

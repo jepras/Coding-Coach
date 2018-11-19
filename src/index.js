@@ -18,11 +18,7 @@ import * as serviceWorker from "./serviceWorker";
 
 import "babel-polyfill";
 
-import {
-  selectSubreddit,
-  fetchPosts,
-  fetchPostsIfNeeded
-} from "./actions/async";
+import { fetchRecords, fetchRecordsIfNeeded } from "./actions/airtableActions";
 
 let middleware = applyMiddleware(
   thunk.withExtraArgument({ getFirebase, getFirestore }),
@@ -44,12 +40,14 @@ let store = createStore(
   )
 );
 
-store.dispatch(selectSubreddit("reactjs"));
-store.dispatch(fetchPosts("reactjs")).then(() => console.log(store.getState()));
-store.dispatch(fetchPostsIfNeeded("reactjs"));
+/* store.dispatch(selectSubreddit("reactjs"));
+ */
+// DELETED: store.dispatch(fetchRecords()).then(() => console.log(store.getState()));
+store.dispatch(fetchRecords());
 /*   .then(() => console.log(store.getState()));
  */
-// wait for firebase to be ready before rendering
+/* store.dispatch(fetchRecordsIfNeeded());
+ */ // wait for firebase to be ready before rendering
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
     <Provider store={store}>

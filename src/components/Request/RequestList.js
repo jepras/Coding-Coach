@@ -11,7 +11,6 @@ const RequestList = ({ requests }) => (
           <SingleRequest key={request.name} {...request} />
         ))}
     </div>
-    {console.log(requests)}
     list?
     <p>{requests}</p>
   </div>

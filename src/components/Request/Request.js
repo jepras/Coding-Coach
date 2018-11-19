@@ -54,8 +54,6 @@ const Request = ({ requests, request }) => (
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  console.log(ownProps);
-  console.log(state);
 
   return {
     requests: state.requests,

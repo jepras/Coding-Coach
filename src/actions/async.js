@@ -30,6 +30,7 @@ function receivePosts(subreddit, json) {
   return {
     type: RECEIVE_POSTS,
     subreddit,
+    // WHAT?!!?
     posts: json.data.children.map(child => child.data),
     receivedAt: Date.now()
   };
@@ -38,14 +39,16 @@ function receivePosts(subreddit, json) {
 export function fetchPosts(subreddit) {
   return dispatch => {
     dispatch(requestPosts(subreddit));
-    return fetch(`https://www.reddit.com/r/${subreddit}.json`)
-      .then(response => response.json())
-      .then(json => dispatch(receivePosts(subreddit, json)));
+    return (
+      fetch(`https://www.reddit.com/r/${subreddit}.json`)
+        // What does this line do?
+        .then(response => response.json())
+        .then(json => dispatch(receivePosts(subreddit, json)))
+    );
   };
 }
 
 function shouldFetchPosts(state, subreddit) {
-  console.log(state.postsBySubreddit.reactjs);
   // changed from postsBySubreddit to just posts
   const posts = state.postsBySubreddit[subreddit];
   if (!posts) {

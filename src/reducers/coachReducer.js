@@ -2,7 +2,6 @@
 const requests = (state = [], action) => {
   switch (action.type) {
     case "ADD_COACH":
-      console.log("succes?");
       return [
         ...state,
         {
