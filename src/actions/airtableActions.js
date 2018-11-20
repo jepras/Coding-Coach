@@ -1,3 +1,5 @@
+import base from "../config/airtableConfig";
+
 export const REQUEST_RECORD = "REQUEST_RECORD";
 export const RECEIVE_RECORD = "RECEIVE_RECORD";
 export const SELECT_ROW = "SELECT_ROW";
@@ -21,32 +23,46 @@ function requestRecords() {
   };
 }
 
+function receiveRecord(record) {
+  return {
+    type: RECEIVE_RECORD,
+    posts: record,
+    receiveddAt: Date.now()
+  };
+}
+
 function receiveRecords(records) {
-  records.map(record => console.log(record.fields));
   return {
     type: RECEIVE_RECORD,
     // WHAT?!!? Why call child?
     posts: records.map(record => record.fields),
-    receivedAt: Date.now()
+    /*     id: records.map(record => record.id),
+     */ receivedAt: Date.now()
+  };
+}
+
+export function fetchRecord(id) {
+  return dispatch => {
+    dispatch(requestRecords());
+
+    return base("Requests").find(id, function(err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      dispatch(receiveRecord(record.fields));
+    });
   };
 }
 
 export function fetchRecords() {
   return dispatch => {
-    // config airtable
-    var Airtable = require("airtable");
-    Airtable.configure({
-      endpointUrl: "https://api.airtable.com",
-      apiKey: "key18X8fJ9bFspylW"
-    });
-    var base = Airtable.base("appWHoHTmxTUmS5Ce");
-
     dispatch(requestRecords());
 
     // find 3 records
     return base("Requests")
       .select({
-        maxRecords: 3,
+        maxRecords: 30,
         view: "Grid view"
       })
       .eachPage(
@@ -55,7 +71,6 @@ export function fetchRecords() {
             console.log("Retrieved", record.get("Name"));
           });
           fetchNextPage();
-          console.log(records);
           dispatch(receiveRecords(records));
         },
         function done(err) {
@@ -65,24 +80,10 @@ export function fetchRecords() {
           }
         }
       );
-    /*   .then(records => console.log(records))
-      .then(response => console.log(response))
-      .then(response => response.json())
-      .then(json => dispatch(receiveRecords(json)))
-      .then(json => console.log(json)); */
-    /* 
-    return (
-      fetch(`https://www.reddit.com/r/${row}.json`)
-        // What does this line do?
-        .then(response => response.json())
-        .then(json => dispatch(receiveRecords(row, json)))
-        .then(json => console.log(json))
-    ); */
   };
 }
 
 function shouldFetchRecords(state) {
-  console.log(state.recordsByRow);
   // changed from postsBySubreddit to just posts
   const records = state.recordsByRow;
   if (!records) {

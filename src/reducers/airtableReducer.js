@@ -23,33 +23,16 @@ function posts(
         didInvalidate: false
       });
     case RECEIVE_RECORD:
-      console.log(action);
-
-      return Object.assign({}, state, {
+      var tis = Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
         items: action.posts,
         lastUpdated: action.receivedAt
       });
+      return tis;
     default:
       return state;
   }
 }
 
-function airtableRecord(state = {}, action) {
-  switch (action.type) {
-    case INVALIDATE_ROW:
-    case RECEIVE_RECORD:
-    case REQUEST_RECORD:
-      console.log(action);
-      console.log(state[action]);
-      return Object.assign({}, state, {
-        [action]: posts(state[action], action)
-      });
-
-    default:
-      return state;
-  }
-}
-
-export default airtableRecord;
+export default posts;

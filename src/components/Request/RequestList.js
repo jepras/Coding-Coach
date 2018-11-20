@@ -1,8 +1,6 @@
 import React from "react";
 import SingleRequest from "./SingleRequest";
 
-import { connect } from "react-redux";
-
 const RequestList = ({ requests }) => (
   <div>
     <div>

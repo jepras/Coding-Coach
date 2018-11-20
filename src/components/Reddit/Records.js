@@ -5,8 +5,8 @@ export default class Records extends Component {
   render() {
     return (
       <ul>
-        {this.props.records.map((record, i) => (
-          <li key={i}>{record.title}</li>
+        {this.props.posts.map((record, i) => (
+          <li key={i}>{record.Title}</li>
         ))}
       </ul>
     );
@@ -14,5 +14,5 @@ export default class Records extends Component {
 }
 
 Records.propTypes = {
-  records: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired
 };

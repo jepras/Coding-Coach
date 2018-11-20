@@ -53,20 +53,13 @@ Airtable.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-  console.log(state.airtableRecord.prototype);
+function mapStateToProps(state, ownProps) {
   const { airtableRecord } = state;
-  console.log(airtableRecord);
-
-  const { isFetching, lastUpdated, items: posts } = airtableRecord || {
-    isFetching: true,
-    items: []
-  };
 
   return {
-    posts,
-    isFetching,
-    lastUpdated
+    posts: airtableRecord.items ? airtableRecord.items : [],
+    isFetching: airtableRecord.isFetching,
+    lastUpdated: airtableRecord.lastUpdated
   };
 }
 
