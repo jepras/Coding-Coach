@@ -8,6 +8,8 @@ class Request extends Component {
   componentDidMount() {
     const { dispatch, id } = this.props;
     dispatch(fetchRecord(id));
+    /*     this.props.fetchRecord(id)
+     */
   }
 
   render() {
@@ -65,6 +67,9 @@ const mapStateToProps = (state, ownProps) => {
     id: id
   };
 };
+
+/* const mapDispatchToProps
+ */
 
 export default connect(
   mapStateToProps,

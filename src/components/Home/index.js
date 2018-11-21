@@ -133,7 +133,7 @@ class Home extends Component {
                     <p className="hero-cta is-revealing">
                       <a
                         className="button button-primary button-shadow"
-                        href="https://jepperasmussen1.typeform.com/to/YuVYW5"
+                        href="https://jepperasmussen1.typeform.com/to/Kc3xNZ"
                       >
                         Make request
                       </a>
