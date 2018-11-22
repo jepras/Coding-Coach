@@ -27,8 +27,11 @@ function posts(
         isFetching: false,
         didInvalidate: false,
         items: action.posts,
-        lastUpdated: action.receivedAt
+        lastUpdated: action.receivedAt,
+        id: action.id
       });
+      console.log(action.posts);
+      console.log(action.id);
       return tis;
     default:
       return state;

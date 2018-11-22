@@ -32,6 +32,8 @@ function receiveRecord(record) {
 }
 
 function receiveRecords(records) {
+  console.log(records);
+  console.log(records.map(record => record.fields));
   return {
     type: RECEIVE_RECORD,
     // WHAT?!!? Why call child?
@@ -55,6 +57,23 @@ export function fetchRecord(id) {
   };
 }
 
+export function updateRecord(assigned, id) {
+  console.log(assigned);
+  return dispatch => {
+    return base("Requests").update(
+      id,
+      { helper: assigned, status: "undergoing" },
+      function(err, record) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log(record.get("helper"));
+      }
+    );
+  };
+}
+
 export function fetchRecords() {
   return dispatch => {
     dispatch(requestRecords());
@@ -72,6 +91,7 @@ export function fetchRecords() {
           });
           fetchNextPage();
           dispatch(receiveRecords(records));
+          console.log(records);
         },
         function done(err) {
           if (err) {

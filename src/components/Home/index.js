@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import Footer from "../Layout/Footer";
+import { connect } from "react-redux";
+import SignedInHome from "./SignedInHome";
+import SignedOutHome from "./SignedOutHome";
 
 class Home extends Component {
   render() {
+    const { auth } = this.props;
+    const reqOrSign = auth.uid ? <SignedInHome /> : <SignedOutHome />;
     return (
       <div>
         <div className="body-wrap boxed-container">
@@ -130,14 +135,7 @@ class Home extends Component {
                     <p className="hero-paragraph is-revealing">
                       On-demand, flat-fee, coding help
                     </p>
-                    <p className="hero-cta is-revealing">
-                      <a
-                        className="button button-primary button-shadow"
-                        href="https://jepperasmussen1.typeform.com/to/Kc3xNZ"
-                      >
-                        Make request
-                      </a>
-                    </p>
+                    <p className="hero-cta is-revealing">{reqOrSign}</p>
                   </div>
                   <div className="hero-illustration is-revealing">
                     <svg
@@ -1078,4 +1076,14 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Home);

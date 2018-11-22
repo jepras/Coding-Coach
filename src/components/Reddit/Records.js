@@ -6,7 +6,7 @@ export default class Records extends Component {
     return (
       <ul>
         {this.props.posts.map((record, i) => (
-          <li key={i}>{record.Title}</li>
+          <li key={i}>{record.title}</li>
         ))}
       </ul>
     );

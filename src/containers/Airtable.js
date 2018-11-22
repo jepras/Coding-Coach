@@ -41,6 +41,7 @@ class Airtable extends Component {
             <Records posts={posts} />
           </div>
         )}
+        <p>{posts.length}</p>
       </div>
     );
   }
@@ -55,6 +56,7 @@ Airtable.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   const { airtableRecord } = state;
+  console.log(airtableRecord);
 
   return {
     posts: airtableRecord.items ? airtableRecord.items : [],
