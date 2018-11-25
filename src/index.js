@@ -29,6 +29,7 @@ let store = createStore(
   compose(
     middleware,
     reduxFirestore(fbConfig),
+    // retrieve profile info from firebase
     reactReduxFirebase(fbConfig, {
       useFirestoreForProfile: true,
       userProfile: "users",

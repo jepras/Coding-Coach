@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-export default class OneAll extends Component {
+export default class OneAllClosed extends Component {
   render() {
     return (
       <ul>
         {this.props.requests.map((request, i) => (
           <div>
-            {request.status === "open" ? (
+            {request.status === "closed" ? (
               <li key={i}>
                 <NavLink to={"/request/" + request.recordid}>
                   {request.title}
@@ -22,6 +22,6 @@ export default class OneAll extends Component {
   }
 }
 
-OneAll.propTypes = {
+OneAllClosed.propTypes = {
   requests: PropTypes.array.isRequired
 };

@@ -6,13 +6,24 @@ export const signIn = credentials => {
       .auth()
       .signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
-        dispatch({ type: 'LOGIN_SUCCESS' });
+        dispatch({ type: "LOGIN_SUCCESS" });
       })
       .catch(err => {
-        dispatch({ type: 'LOGIN_ERROR', err });
+        dispatch({ type: "LOGIN_ERROR", err });
       });
   };
 };
+
+/* export const updateProfile = (authId, state) => {
+  return (dispatch, getState { getFirebase } ) => {
+    const firebase = getFirebase();   
+
+    firebase
+    .collection("users")
+    .doc(authId)
+    .set("type": state.fields)
+  }
+} */
 
 export const signOut = () => {
   return (dispatch, getState, { getFirebase }) => {
@@ -21,7 +32,7 @@ export const signOut = () => {
       .auth()
       .signOut()
       .then(() => {
-        dispatch({ type: 'SIGNOUT_SUCCESS' });
+        dispatch({ type: "SIGNOUT_SUCCESS" });
       });
   };
 };
@@ -42,23 +53,24 @@ export const signUp = newUser => {
         // if collection doesnt exist, firestore will create. Here we create it in firestore.
         return (
           firestore
-            .collection('users')
+            .collection("users")
             // create new document with userId
             .doc(resp.user.uid)
             .set({
               firstName: newUser.firstName,
               lastName: newUser.lastName,
               initials: newUser.firstName[0] + newUser.lastName[0],
-              fullName: newUser.firstName + ' ' + newUser.lastName,
-              mail: newUser.email
+              fullName: newUser.firstName + " " + newUser.lastName,
+              mail: newUser.email,
+              type: newUser.type
             })
         );
       })
       .then(() => {
-        dispatch({ type: 'SIGNUP_SUCCESS' });
+        dispatch({ type: "SIGNUP_SUCCESS" });
       })
       .catch(err => {
-        dispatch({ type: 'SIGNUP_ERROR', err });
+        dispatch({ type: "SIGNUP_ERROR", err });
       });
   };
 };

@@ -30,8 +30,6 @@ function posts(
         lastUpdated: action.receivedAt,
         id: action.id
       });
-      console.log(action.posts);
-      console.log(action.id);
       return tis;
     default:
       return state;

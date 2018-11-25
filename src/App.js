@@ -11,6 +11,7 @@ import SignUp from "./components/auth/SignUp";
 import Request from "./components/Request/Request";
 import CoachStart from "./components/Coaches/CoachStart";
 import Airtable from "./containers/Airtable";
+import Profile from "./components/Layout/Profile";
 import Reddit from "./containers/Reddit";
 import Dashboard from "./components/Request/Dashboard";
 
@@ -26,6 +27,7 @@ class App extends Component {
         <Route path="/request/:id" component={Request} />
         <Route path="/reddit" component={Reddit} />
         <Route path="/airtable" component={Airtable} />
+        <Route path="/profile" component={Profile} />
       </div>
     );
   }

@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 export default class One extends Component {
   render() {
     const { auth } = this.props;
-    console.log(auth);
     return (
       <ul>
         {this.props.requests.map((request, i) => (

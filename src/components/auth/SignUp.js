@@ -9,17 +9,21 @@ class SignUp extends Component {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    type: ""
   };
+
   handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value
     });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.signUp(this.state);
   };
+
   render() {
     const { authError, auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
@@ -29,11 +33,7 @@ class SignUp extends Component {
         <section className="">
           <div className="hero-inner columns is-mobile">
             <div className="hero-copy text-center column is-half is-offset-one-quarter">
-              <form
-                attribute="netlify"
-                className="white"
-                onSubmit={this.handleSubmit}
-              >
+              <form netlify className="white" onSubmit={this.handleSubmit}>
                 <h1 className="hero-title mt-0 is-revealing">Sign Up</h1>
                 <div className="field">
                   <div className="control">
@@ -73,6 +73,20 @@ class SignUp extends Component {
                     id="lastName"
                     onChange={this.handleChange}
                   />
+                </div>
+                <div className="field">
+                  <label>Sign up as: </label>
+                  <select
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                    id="type"
+                    type="text"
+                  >
+                    <option selected value="student">
+                      Student
+                    </option>
+                    <option value="coach">Coach</option>
+                  </select>
                 </div>
                 <div className="field">
                   <button className="button button-primary button-shadow">

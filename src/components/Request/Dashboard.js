@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchRecordsIfNeeded } from "../../actions/airtableActions";
 import One from "./One";
 import OneAll from "./OneAll";
+import OneAllClosed from "./OneAllClosed";
 import Layout from "../Layout/Layout";
 
 class Dashboard extends Component {
@@ -33,30 +34,44 @@ class Dashboard extends Component {
   } */
 
   render() {
-    const { requests, isFetching, auth } = this.props;
+    const { requests, isFetching, auth, profile } = this.props;
     return (
       <Layout>
         <section>
           <div className="hero-inner columns is-mobile">
             <div className="hero-copy column is-half is-offset-one-quarter">
-              <h1 className="title">Your open requests</h1>
               {isFetching && requests.length === 0 && <h2>Loading...</h2>}
               {!isFetching && requests.length === 0 && <h2>Empty.</h2>}
-              {requests.length > 0 && (
-                <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                  <One requests={requests} auth={auth} />
+              {profile.type === "student" ? (
+                <div>
+                  <h1 className="title">Your open requests</h1>
+                  {requests.length > 0 && (
+                    <div style={{ opacity: isFetching ? 0.5 : 1 }}>
+                      <One requests={requests} auth={auth} />
+                    </div>
+                  )}
+                  <hr />
+                  <a
+                    className="button button-primary button-shadow"
+                    href="https://jepperasmussen1.typeform.com/to/Kc3xNZ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Make request
+                  </a>{" "}
                 </div>
-              )}
-              <hr />
+              ) : null}
+
               <h2 className="title">All open requests</h2>
               <div style={{ opacity: isFetching ? 0.5 : 1 }}>
                 <OneAll requests={requests} />
               </div>
               <hr />
-              {/* <h2 className="title">All closed requests</h2>
+              <h2 className="title">All closed requests</h2>
               <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-                <One requests={requests} />
-              </div> */}
+                <OneAllClosed requests={requests} />
+              </div>
+              <hr />
             </div>
           </div>
         </section>
@@ -75,13 +90,13 @@ Dashboard.propTypes = {
 function mapStateToProps(state, ownProps) {
   const { airtableRecord } = state;
   const { firebase } = state;
-  console.log(firebase.auth.email);
 
   return {
     requests: airtableRecord.items ? airtableRecord.items : [],
     isFetching: airtableRecord.isFetching,
     lastUpdated: airtableRecord.lastUpdated,
-    auth: firebase.auth.email ? firebase.auth.email : null
+    auth: firebase.auth.email ? firebase.auth.email : null,
+    profile: state.firebase.profile
   };
 }
 
