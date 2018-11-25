@@ -31,6 +31,7 @@ class SignUp extends Component {
     return (
       <Layout>
         <section className="">
+          <div className="margin-top" />
           <div className="hero-inner columns is-mobile">
             <div className="hero-copy text-center column is-half is-offset-one-quarter">
               <form netlify className="white" onSubmit={this.handleSubmit}>
