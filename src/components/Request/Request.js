@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 class Request extends Component {
   constructor(props) {
     super(props);
+    // put updated here??
     this.state = { value: "", modalState: false };
     this.handleClick = this.handleClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -17,6 +18,13 @@ class Request extends Component {
     const { dispatch, id } = this.props;
     dispatch(fetchRecord(id));
   }
+
+  /* componentDidUpdate() {
+    const { dispatch } = this.props;
+    if (state.updated === x) {
+      dispatch(fetchRecord(id));
+    }
+  } */
 
   toggleModal() {
     this.setState((prev, props) => {
@@ -32,6 +40,7 @@ class Request extends Component {
     const { dispatch, id } = this.props;
     const assigned = event.target.name;
     const status = event.target.id;
+    // send updated: true/false in the store
     dispatch(updateRecord(assigned, id, status));
     dispatch(fetchRecord(id));
   }
@@ -43,6 +52,7 @@ class Request extends Component {
     const assigned = event.target.name;
     dispatch(updateRecord(assigned, id, status));
     this.toggleModal();
+    // use shouldComponentUpdate here?
     dispatch(fetchRecord(id));
   }
 

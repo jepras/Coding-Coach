@@ -11,7 +11,10 @@ class Dashboard extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchRecordsIfNeeded());
+    console.log("Component did mount!");
   }
+
+  // Add componentWillUnmount?
 
   /* componentDidUpdate(prevProps) {
     if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {

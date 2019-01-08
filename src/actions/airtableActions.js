@@ -112,6 +112,7 @@ function shouldFetchRecords(state) {
 export function fetchRecordsIfNeeded() {
   return (dispatch, getState) => {
     if (shouldFetchRecords(getState())) {
+      console.log("action fired!");
       return dispatch(fetchRecords());
     }
   };

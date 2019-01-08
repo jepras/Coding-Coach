@@ -5,7 +5,8 @@ import SignedInHome from "./SignedInHome";
 import SignedOutHome from "./SignedOutHome";
 import Navbar from "../Layout/Navbar";
 import HeaderIll from "../Layout/HeaderIll";
-
+/* require("../../../dist/js/main.min.js");
+ */
 class Home extends Component {
   render() {
     const { auth } = this.props;
@@ -961,8 +962,6 @@ class Home extends Component {
 
           <Footer />
         </div>
-
-        <script src="../../../dist/js/main.min.js" />
       </div>
     );
   }

@@ -14,23 +14,39 @@ function posts(
 ) {
   switch (action.type) {
     case INVALIDATE_ROW:
-      return Object.assign({}, state, {
+      return {
         didInvalidate: true
-      });
+      };
+    /* return Object.assign({}, state, {
+        didInvalidate: true
+      }); */
     case REQUEST_RECORD:
-      return Object.assign({}, state, {
+      /* return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
-      });
+      }); */
+      return {
+        ...state,
+        isFetching: true,
+        didInvalidate: false
+      };
     case RECEIVE_RECORD:
-      var tis = Object.assign({}, state, {
+      /* var tis = Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
         items: action.posts,
         lastUpdated: action.receivedAt,
         id: action.id
       });
-      return tis;
+      return tis; */
+      return {
+        ...state,
+        isFetching: false,
+        didInvalidate: false,
+        items: action.posts,
+        lastUpdated: action.receivedAt,
+        id: action.id
+      };
     default:
       return state;
   }
